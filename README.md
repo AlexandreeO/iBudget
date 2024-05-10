@@ -1,25 +1,39 @@
-# MERN-Stack Infrastructure
+## iBudget
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+Welcome to iBudget, your ultimate solution for managing expenses and budgets among groups of people sharing financial responsibilities. Similar to SplitWise, iBudget simplifies the process of splitting expenses, tracking contributions, and managing budgets within any arrangement.
 
-## Here's the process to create a new MERN-Stack project that starts with the infrastructure code:
+### Key Features:
 
-1. Clone the repo you just created
+1. **Expense Tracking**: Easily create and manage expenses within your group. Whether it's splitting bills for a shared apartment, organizing a group trip, or managing expenses for a project, iBudget has you covered.
 
-2. Install the Node modules: `npm i`
+2. **Budget Management**: Set budgets for different categories and monitor your spending to stay within your financial limits. iBudget helps you plan and allocate funds efficiently.
 
-3. Create a .env (`touch .env`) and add entries for DATABASE_URL and SECRET
+3. **Contribution Management**: Keep track of who owes what and who has contributed how much towards each expense. iBudget ensures transparency and fairness in expense sharing.
 
-4. Update the "name": "mern-infrastructure" in package.json to the name of your project.
+4. **Authentication Options**: iBudget offers multiple authentication methods for secure access. Users can sign in using OAuth for convenience or opt for token-based authentication for enhanced security.
 
-5. Create a new repo on your personal GH account.
+### Getting Started:
 
-6. Copy the new GH repo's URL.
+1. **Sign Up/Sign In**: Create an account or sign in using OAuth for seamless access to iBudget's features.
 
-7. Update the remote's URL: git remote set-url origin <paste the copied GH url>
+2. **Create Groups**: Start by creating a group for your shared expenses. Invite friends, family, or colleagues to join and collaborate.
 
-8. Make the initial commit: `git add -A && git commit -m "Initial commit"`
+3. **Add Expenses**: Enter details for each expense incurred within the group. Specify the amount, description, and category to keep your finances organized.
 
-9. Push for the first time: `git push -u origin main`
+4. **Track Contributions**: Monitor contributions from each group member towards shared expenses. iBudget automatically calculates who owes what, simplifying repayment.
 
-10. Have fun coding your new project and don't forget to make frequent commits!
+5. **Manage Budgets**: Set budgets for different expense categories to stay on track with your financial goals. Receive notifications when approaching budget limits.
+
+6. **Stay Updated**: Keep everyone in the loop with real-time updates on expense tracking and contributions. iBudget ensures transparency and accountability.
+
+### Security:
+
+iBudget prioritizes the security and privacy of your financial data. Our platform employs robust encryption methods and offers both OAuth and token-based authentication to safeguard user accounts.
+
+### Feedback:
+
+We are constantly striving to improve iBudget and welcome your feedback. If you have any suggestions, feature requests, or encounter any issues, please don't hesitate to reach out to our support team.
+
+### Get Started with iBudget Today!
+
+Say goodbye to the hassle of splitting expenses and managing budgets manually. With iBudget, streamline your group finances and focus on what truly matters. Sign up now and take control of your shared expenses with ease!
