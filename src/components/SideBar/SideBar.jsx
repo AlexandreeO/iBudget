@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function SideBar() {
     return (
     <nav>
-        <Link to="/dashboard"> Dashboard </Link>
+        <Link to="/dashboard"> Dashboard</Link>
         <br></br>
         <br></br>
         <Link to="/groups"> View Groups </Link>

@@ -26,6 +26,8 @@ export default function GroupsPage() {
                     <Link to={`/groups/${group._id}`} key={group._id}>{group.groupName}<br></br></Link>
                 ))}
             </div>
+            <br>
+            </br>
             <Link to='/groups/new' className="button btn-sm"> Create New Group </Link>
         </div>
     );

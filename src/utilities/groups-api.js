@@ -13,6 +13,10 @@ export function create(groupData){
 
 export function getGroup (groupId){
 
-    return sendRequest(`${BASE_URL}/${groupId}`, groupId)
+    return sendRequest(`${BASE_URL}/${groupId}`)
 
+}
+
+export function inviteMember(groupId, userEmail){
+    return sendRequest(`${BASE_URL}/${groupId}/invite`, 'POST', { userEmail });
 }

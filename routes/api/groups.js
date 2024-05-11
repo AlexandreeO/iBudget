@@ -5,6 +5,9 @@ const groupsCtrl = require('../../controllers/api/groups')
 // GET /api/groups
 
 router.get('/', groupsCtrl.index);
+router.get('/:id', groupsCtrl.view);
 router.post('/new', groupsCtrl.create)
+router.post('/:id/invite', groupsCtrl.addGroupMember)
+
 
 module.exports = router;
