@@ -7,8 +7,17 @@ export default function GroupDetailPage() {
     const [group, setGroup] = useState(null);
     const [email, setEmail] = useState('');
     const [message, setMessage]=useState('')
+    const [expense, setExpense] = useState({
+        
+        description: '',
+        date: '',
+        amount: ''
+    });
 
-    const handleSubmit = async (event) => {
+    
+
+
+    const handleInviteMember = async (event) => {
         event.preventDefault();
         try {
             await groupsAPI.inviteMember(id, email);
@@ -17,6 +26,19 @@ export default function GroupDetailPage() {
         } catch (error) {
             setMessage(error.response.data.message);
         }
+    }
+
+  
+
+    const handleChange = (event)=>{
+        const {name, value }= event.target;
+        setExpense(prevExpense=>({...prevExpense, [name]:value}))
+    }
+
+    const handleAddExpense = async(event)=>{
+        event.preventDefault();
+        const newExpense = await groupsAPI.addExpense(id, expense);
+        setExpense({ description: '', date: '', amount: '' });
     }
 
     useEffect(function (){
@@ -47,7 +69,7 @@ export default function GroupDetailPage() {
             )}
 
             <h2>Invite Friends</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleInviteMember}>
                 <input 
                     type="email" 
                     name="userEmail"
@@ -59,6 +81,43 @@ export default function GroupDetailPage() {
                 <button type="submit">Send Invite</button>
             </form>
             {message && <p>{message}</p>}
+
+            <h2>Add Expense</h2>
+
+            <form onSubmit={handleAddExpense}>
+    <label>
+        Description:
+        <input 
+            type="text"
+            name="description"
+            value={expense.description}
+            onChange={handleChange}
+            required
+        />
+    </label>
+    <label>
+        Date:
+        <input 
+            type="date"
+            name="date"
+            value={expense.date}
+            onChange={handleChange}
+            required
+        />
+    </label>
+    <label>
+        Amount:
+        <input 
+            type="number"
+            name="amount"
+            value={expense.amount}
+            onChange={handleChange}
+            required
+        />
+    </label>
+    <button type="submit">Add Expense</button>
+</form>
+
         </div>
     );
 }

@@ -1,11 +1,13 @@
 const Group = require("../../models/group");
 const User = require("../../models/user");
+const Expense = require("../../models/expense");
 
 module.exports = {
     index,
     create,
     view,
     addGroupMember,
+    addExpense,
 };
 
 async function index(req, res) {
@@ -70,6 +72,28 @@ async function addGroupMember(req, res){
         res.status(200).send('User invited successfully');
     } catch (error) {
         res.status(500).send(error.message);
+    }
+
+}
+
+async function addExpense(req, res){
+    try {
+        const userId = req.user._id;
+        const groupId = req.params.id;
+        
+        console.log("User ID from JWT:", userId);
+        const newExpense = new Expense({
+            description: req.body.description,
+            amount: req.body.amount,
+            date: req.body.date,
+            user: userId, 
+            group: groupId,// Make sure this is correctly assigned
+        });
+        await newExpense.save();
+        res.status(201).json(newExpense);
+    } catch (error) {
+        console.error("Failed to create expense:", error);
+        res.status(400).json({ error: "Unable to create expense" });
     }
 
 }

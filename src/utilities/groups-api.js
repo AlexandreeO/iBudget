@@ -20,3 +20,7 @@ export function getGroup (groupId){
 export function inviteMember(groupId, userEmail){
     return sendRequest(`${BASE_URL}/${groupId}/invite`, 'POST', { userEmail });
 }
+
+export function addExpense(groupId, expenseData){
+    return sendRequest(`${BASE_URL}/${groupId}/newExpense`, 'POST', expenseData);
+}
