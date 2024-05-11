@@ -119,10 +119,10 @@ input:focus {
 
 button, a.button {
   margin: 1vmin;
-  padding: 1vmin;
+  padding: 10px 15px;
   color: var(--white);
   background-color: var(--orange);
-  font-size: 2vmin;
+  font-size: 15px;
   font-weight: bold;
   text-decoration: none;
   text-align: center;

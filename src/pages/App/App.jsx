@@ -9,9 +9,11 @@ import GroupsPage from "../../pages/GroupsPage/GroupsPage";
 import DashboardPage from '../../pages/DashboardPage/DashboardPage';
 import AllExpensesPage from '../../pages/AllExpensesPage/AllExpensesPage';
 import CreateGroupPage from '../../pages/CreateGroupPage/CreateGroupPage';
+import GroupDetailPage from '../../pages/GroupDetailPage/GroupDetailPage';
 
 export default function App() {
     const [user, setUser] = useState(getUser());
+    const [groupList, setGroupList] = useState([]);
 
     return (
         <main className="App">
@@ -21,9 +23,9 @@ export default function App() {
                     <SideBar />
                     <Routes>
                         <Route path="/dashboard" element={<DashboardPage />} />
-                        <Route path="/groups" element={<GroupsPage />} />
-                        <Route path='/groups/new' element={<CreateGroupPage />} />
-                        
+                        <Route path="/groups" element={<GroupsPage groupList={groupList} setGroupList={setGroupList}/>} />
+                        <Route path='/groups/new' element={<CreateGroupPage groupList={groupList} setGroupList={setGroupList}/>} />
+                        <Route path="/groups/:id" element={<GroupDetailPage />} />
                         <Route path="/expenses" element={<AllExpensesPage />} />
                         
                     </Routes>
