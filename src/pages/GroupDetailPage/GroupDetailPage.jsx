@@ -14,6 +14,7 @@ export default function GroupDetailPage({ currentUser }) {
     });
     const [groupExpenses, setGroupExpenses] = useState([]);
     const [balances, setBalances] = useState({});
+    const [selectedMember, setSelectedMember] = useState("");
     const navigate = useNavigate();
 
     useEffect(function() {
@@ -31,6 +32,7 @@ export default function GroupDetailPage({ currentUser }) {
         group.groupMembers.forEach(member => {
             memberBalances[member._id] = 0;
         });
+
         //balances
         expenses.forEach(expense => {
             const share = expense.amount / numMembers;
@@ -78,6 +80,10 @@ export default function GroupDetailPage({ currentUser }) {
         }
     };
 
+    const handleMemberSelect = (event) => {
+        setSelectedMember(event.target.value);
+    };
+
     useEffect(function () {
         async function getGroup() {
             const groupData = await groupsAPI.getGroup(id);
@@ -92,6 +98,10 @@ export default function GroupDetailPage({ currentUser }) {
             setBalances(balances);
         }
     }, [group, groupExpenses]);
+
+    const filteredExpenses = selectedMember 
+        ? groupExpenses.filter(expense => expense.user._id === selectedMember)
+        : groupExpenses;
 
     return (
         <div>
@@ -109,12 +119,19 @@ export default function GroupDetailPage({ currentUser }) {
                         )}
                     </ul>
                     <h4>Group Expenses</h4>
+                    <label>Filter by member: </label>
+                    <select value={selectedMember} onChange={handleMemberSelect}>
+                        <option value="">All Members</option>
+                        {group.groupMembers.map(member => (
+                            <option key={member._id} value={member._id}>{member.name}</option>
+                        ))}
+                    </select>
                     <ul>
-                        {groupExpenses.map((expense) => (
+                        {filteredExpenses.map((expense) => (
                             <li key={expense._id}>
                                 {" "}
                                 {expense.description} - ${expense.amount} on{" "}
-                                {new Date(expense.date).toLocaleDateString(undefined, {weekday:"long", year:"numeric", month:"short", day:"numeric" })} -by {expense.user.name}
+                                {new Date(expense.date).toLocaleDateString(undefined, {weekday:"long", year:"numeric", month:"short", day:"numeric" })} - by {expense.user.name}
                             </li>
                         ))}
                     </ul>
