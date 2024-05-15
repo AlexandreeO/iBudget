@@ -9,5 +9,12 @@ const groupSchema = new Schema({
     type: { type: String}
 });
 
+groupSchema.pre("save", function(next){
+    if (!this.groupMembers.includes(this.owner)) {
+        this.groupMembers.push(this.owner)
+    }
+    next()
+})
+
 const Group = mongoose.model('Group', groupSchema);
 module.exports = Group;

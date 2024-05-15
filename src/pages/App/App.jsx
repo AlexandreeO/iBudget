@@ -6,10 +6,11 @@ import AuthPage from "../AuthPage/AuthPage";
 import SideBar from "../../components/SideBar/SideBar";
 import NavBar from "../../components/NavBar/NavBar";
 import GroupsPage from "../../pages/GroupsPage/GroupsPage";
-import DashboardPage from '../../pages/DashboardPage/DashboardPage';
-import AllExpensesPage from '../../pages/AllExpensesPage/AllExpensesPage';
-import CreateGroupPage from '../../pages/CreateGroupPage/CreateGroupPage';
-import GroupDetailPage from '../../pages/GroupDetailPage/GroupDetailPage';
+import DashboardPage from "../../pages/DashboardPage/DashboardPage";
+import AllExpensesPage from "../../pages/AllExpensesPage/AllExpensesPage";
+import CreateGroupPage from "../../pages/CreateGroupPage/CreateGroupPage";
+import GroupDetailPage from "../../pages/GroupDetailPage/GroupDetailPage";
+import GroupEditForm from "../../components/GroupEditForm/GroupEditForm";
 
 export default function App() {
     const [user, setUser] = useState(getUser());
@@ -23,11 +24,33 @@ export default function App() {
                     <SideBar />
                     <Routes>
                         <Route path="/dashboard" element={<DashboardPage />} />
-                        <Route path="/groups" element={<GroupsPage groupList={groupList} setGroupList={setGroupList}/>} />
-                        <Route path='/groups/new' element={<CreateGroupPage groupList={groupList} setGroupList={setGroupList}/>} />
-                        <Route path="/groups/:id" element={<GroupDetailPage />} />
+                        <Route
+                            path="/groups"
+                            element={
+                                <GroupsPage
+                                    groupList={groupList}
+                                    setGroupList={setGroupList}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/groups/new"
+                            element={
+                                <CreateGroupPage
+                                    groupList={groupList}
+                                    setGroupList={setGroupList}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/groups/:id"
+                            element={<GroupDetailPage currentUser={user} />}
+                        />
                         <Route path="/expenses" element={<AllExpensesPage />} />
-                        
+                        <Route
+                            path="/groups/:id/edit"
+                            element={<GroupEditForm currentUser={user} />}
+                        />
                     </Routes>
                 </>
             ) : (

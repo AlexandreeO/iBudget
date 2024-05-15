@@ -1,26 +1,39 @@
-import sendRequest from './send-request';
+import sendRequest from "./send-request";
 
-const BASE_URL = '/api/groups';
+const BASE_URL = "/api/groups";
 
-export function getAll (){
+export function getAll() {
     return sendRequest(BASE_URL);
 }
 
-export function create(groupData){
-    return sendRequest(`${BASE_URL}/new`, 'POST', groupData)
-
+export function create(groupData) {
+    return sendRequest(`${BASE_URL}/new`, "POST", groupData);
 }
 
-export function getGroup (groupId){
-
-    return sendRequest(`${BASE_URL}/${groupId}`)
-
+export function deleteGroup(groupId) {
+    return sendRequest(`${BASE_URL}/${groupId}`, "DELETE");
 }
 
-export function inviteMember(groupId, userEmail){
-    return sendRequest(`${BASE_URL}/${groupId}/invite`, 'POST', { userEmail });
+export function getGroup(groupId) {
+    return sendRequest(`${BASE_URL}/${groupId}`);
 }
 
-export function addExpense(groupId, expenseData){
-    return sendRequest(`${BASE_URL}/${groupId}/newExpense`, 'POST', expenseData);
+export function inviteMember(groupId, userEmail) {
+    return sendRequest(`${BASE_URL}/${groupId}/invite`, "POST", { userEmail });
+}
+
+export function addExpense(groupId, expenseData) {
+    return sendRequest(
+        `${BASE_URL}/${groupId}/newExpense`,
+        "POST",
+        expenseData
+    );
+}
+
+export function getGroupExpenses(groupId) {
+    return sendRequest(`${BASE_URL}/${groupId}/expenses`);
+}
+
+export function updateGroup(id, groupData) {
+    return sendRequest(`${BASE_URL}/${id}`, "PUT", groupData);
 }
