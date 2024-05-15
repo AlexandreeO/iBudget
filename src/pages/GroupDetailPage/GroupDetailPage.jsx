@@ -13,15 +13,38 @@ export default function GroupDetailPage({ currentUser }) {
         amount: "",
     });
     const [groupExpenses, setGroupExpenses] = useState([]);
+    const [balances, setBalances] = useState({});
     const navigate = useNavigate();
 
-    useEffect(function(){
-        async function getGroupExpenses(){
+    useEffect(function() {
+        async function getGroupExpenses() {
             const groupExpenses = await groupsAPI.getGroupExpenses(id);
             setGroupExpenses(groupExpenses);
         }
         getGroupExpenses();
-    }, [id])
+    }, [id]);
+
+    const calculateBalances = (group, expenses) => {
+        const memberBalances = {};
+        const numMembers = group.groupMembers.length;
+
+        group.groupMembers.forEach(member => {
+            memberBalances[member._id] = 0;
+        });
+        //balances
+        expenses.forEach(expense => {
+            const share = expense.amount / numMembers;
+            group.groupMembers.forEach(member => {
+                if (expense.user._id === member._id) {
+                    memberBalances[member._id] += (expense.amount - share);
+                } else {
+                    memberBalances[member._id] -= share;
+                }
+            });
+        });
+
+        return memberBalances;
+    };
 
     const handleInviteMember = async (event) => {
         event.preventDefault();
@@ -63,6 +86,13 @@ export default function GroupDetailPage({ currentUser }) {
         getGroup();
     }, [id]);
 
+    useEffect(() => {
+        if (group && groupExpenses.length) {
+            const balances = calculateBalances(group, groupExpenses);
+            setBalances(balances);
+        }
+    }, [group, groupExpenses]);
+
     return (
         <div>
             <h1>Group Details</h1>
@@ -89,7 +119,13 @@ export default function GroupDetailPage({ currentUser }) {
                         ))}
                     </ul>
                     <h4>Group Balance</h4>
-                    
+                    <ul>
+                        {group.groupMembers.map(member => (
+                            <li key={member._id}>
+                                {member.name}: ${balances[member._id]?.toFixed(2)}
+                            </li>
+                        ))}
+                    </ul>
                     {currentUser && currentUser._id === group.owner && (
                         <>
                             <button onClick={handleDeleteGroup}>Delete Group</button>
@@ -153,14 +189,3 @@ export default function GroupDetailPage({ currentUser }) {
         </div>
     );
 }
-
-
-// {
-//     "user": "6641e98686b38052c20454b2",
-//     "group": "6641d3d7b8ceaa690c1d48d0",
-//     "description": "test",
-//     "amount": 32,
-//     "date": "2024-05-15T00:00:00.000Z",
-//     "_id": "66447c66b6ccce66e26aa78c",
-//     "__v": 0
-// }
