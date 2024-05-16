@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
@@ -26,6 +24,36 @@
 
 .App-link {
   color: #61dafb;
+}
+
+
+.App {
+  display: grid;
+  grid-template-rows: 60px auto; /* Height for the NavBar and the rest for content */
+  grid-template-columns: 250px 1fr; /* Sidebar width of 250px and rest is for content */
+  grid-template-areas:
+      "header header"
+      "sidebar main";
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  grid-area: header;
+  background-color: #2C3E50; /* Dark blue background */
+  color: #FFFFFF; /* White text color */
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1; /* Ensures the header is above other content if overlapping occurs */
+}
+
+
+.main-content {
+  grid-area: main;
+  overflow-y: auto; /* Allows vertical scrolling in the main content */
+  padding: 20px;
 }
 
 @keyframes App-logo-spin {

@@ -4,7 +4,6 @@ import { getUser } from "../../utilities/users-service";
 import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
 import SideBar from "../../components/SideBar/SideBar";
-import NavBar from "../../components/NavBar/NavBar";
 import GroupsPage from "../../pages/GroupsPage/GroupsPage";
 import DashboardPage from "../../pages/DashboardPage/DashboardPage";
 import AllExpensesPage from "../../pages/AllExpensesPage/AllExpensesPage";
@@ -20,38 +19,47 @@ export default function App() {
         <main className="App">
             {user ? (
                 <>
-                    <NavBar user={user} setUser={setUser} />
-                    <SideBar />
-                    <Routes>
-                        <Route path="/dashboard" element={<DashboardPage />} />
-                        <Route
-                            path="/groups"
-                            element={
-                                <GroupsPage
-                                    groupList={groupList}
-                                    setGroupList={setGroupList}
-                                />
-                            }
-                        />
-                        <Route
-                            path="/groups/new"
-                            element={
-                                <CreateGroupPage
-                                    groupList={groupList}
-                                    setGroupList={setGroupList}
-                                />
-                            }
-                        />
-                        <Route
-                            path="/groups/:id"
-                            element={<GroupDetailPage currentUser={user} />}
-                        />
-                        <Route path="/expenses" element={<AllExpensesPage />} />
-                        <Route
-                            path="/groups/:id/edit"
-                            element={<GroupEditForm currentUser={user} />}
-                        />
-                    </Routes>
+                    <div>
+                        <SideBar user={user} setUser={setUser}/>
+                    </div>
+                    <div className="main-content">
+                        <Routes>
+                            <Route
+                                path="/dashboard"
+                                element={<DashboardPage />}
+                            />
+                            <Route
+                                path="/groups"
+                                element={
+                                    <GroupsPage
+                                        groupList={groupList}
+                                        setGroupList={setGroupList}
+                                    />
+                                }
+                            />
+                            <Route
+                                path="/groups/new"
+                                element={
+                                    <CreateGroupPage
+                                        groupList={groupList}
+                                        setGroupList={setGroupList}
+                                    />
+                                }
+                            />
+                            <Route
+                                path="/groups/:id"
+                                element={<GroupDetailPage currentUser={user} />}
+                            />
+                            <Route
+                                path="/expenses"
+                                element={<AllExpensesPage />}
+                            />
+                            <Route
+                                path="/groups/:id/edit"
+                                element={<GroupEditForm currentUser={user} />}
+                            />
+                        </Routes>
+                    </div>
                 </>
             ) : (
                 <AuthPage setUser={setUser} />

@@ -1,0 +1,31 @@
+/* General styles for the sidebar */
+.sidebar {
+    position: fixed; /* Fixes the sidebar in place */
+    left: 0; /* Aligns it to the left */
+    top: 0; /* Aligns it to the top */
+    width: 200px; /* Set the width of the sidebar */
+    height: 100vh; /* Full height of the viewport */
+    background-color: #2F4F4F;
+    padding: 20px; /* Padding inside the sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better visibility */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Align items vertically */
+    justify-content: flex-start; /* Align items to the start */
+    z-index: 1000; /* Ensures the sidebar is on top of other elements */
+}
+
+/* Links inside the sidebar */
+.sidebar a {
+    color: #483D8B;
+    text-decoration: none;
+    font-size: 14px; 
+    margin-bottom: 20px; 
+}
+
+.sidebar a:hover {
+    color: var(--orange); /* Color on hover */
+}
+
+h5 {
+    color:white;
+}

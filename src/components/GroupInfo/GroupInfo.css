@@ -1,0 +1,12 @@
+.group-info {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.group-info h2 {
+    margin-top: 0;
+    color: #333;
+}

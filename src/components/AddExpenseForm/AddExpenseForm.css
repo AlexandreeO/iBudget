@@ -1,0 +1,16 @@
+.add-expense-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.add-expense-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.add-expense-form input {
+    width: 100%;
+    padding: 8px;
+}
