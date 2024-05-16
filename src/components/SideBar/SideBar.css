@@ -1,31 +1,68 @@
 /* General styles for the sidebar */
 .sidebar {
-    position: fixed; /* Fixes the sidebar in place */
-    left: 0; /* Aligns it to the left */
-    top: 0; /* Aligns it to the top */
-    width: 200px; /* Set the width of the sidebar */
-    height: 100vh; /* Full height of the viewport */
-    background-color: #2F4F4F;
-    padding: 20px; /* Padding inside the sidebar */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better visibility */
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Align items vertically */
-    justify-content: flex-start; /* Align items to the start */
-    z-index: 1000; /* Ensures the sidebar is on top of other elements */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #333; /* Darker shade for the background */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 1000;
+    color: white; /* Text color set to white */
+    font-size: 16px; /* Larger font size for better readability */
 }
 
-/* Links inside the sidebar */
+/* Header style within the sidebar, such as welcome message or title */
+.sidebar h5 {
+    margin-bottom: 20px; /* Space below the header */
+    font-weight: normal; /* Less emphasis on header weight */
+}
+
+/* Styling for links */
 .sidebar a {
-    color: #483D8B;
+    color: #fff; /* White text color */
     text-decoration: none;
-    font-size: 14px; 
-    margin-bottom: 20px; 
+    padding: 10px;
+    margin-bottom: 10px; /* Space between links */
+    display: flex; /* Align icons with text */
+    align-items: center; /* Center items in a row */
+    border-radius: 5px; /* Rounded corners for the link backgrounds */
 }
 
-.sidebar a:hover {
-    color: var(--orange); /* Color on hover */
+/* Hover and active styles for links */
+.sidebar a:hover, .sidebar a.active {
+    background-color: #f0ad4e; /* Bootstrap's button warning color for highlight */
+    color: #333; /* Dark text color on hover for contrast */
 }
 
-h5 {
-    color:white;
+/* Icon styling */
+.sidebar a i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Logout and other action styles */
+.sidebar div {
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.sidebar div:hover {
+    background-color: #f0ad4e;
+    color: #333;
+}
+
+
+.sidebar-logo img {
+    display: block;  
+    width: 80%;      
+    margin: 0 auto 20px; 
+    height: auto;   
 }

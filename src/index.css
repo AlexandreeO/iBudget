@@ -23,9 +23,10 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--tan-4);
+    background-color: #F1EEE7;
     padding: 2vmin;
-    height: 100vh;
+    min-height: 100vh; /* Use viewport height instead of 100% */
+    overflow-y: hidden; /* Ensures scrolling is possible if content exceeds viewport height */
 }
 
 code {

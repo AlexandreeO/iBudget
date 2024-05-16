@@ -21,13 +21,14 @@ export default function GroupsPage() {
     return (
         <div>
             <h1>Groups</h1>
-            <div>
+            
+            <ul className="list-group">
                 {groupList.map(group => (
-                    <Link to={`/groups/${group._id}`} key={group._id}>{group.groupName}<br></br></Link>
+                    <Link to={`/groups/${group._id}`} key={group._id}><li className="list-group-item d-flex justify-content-between align-items-center">{group.groupName}<span class="badge text-bg-primary rounded-pill">{group.type}</span></li></Link>
                 ))}
-            </div>
-            <br>
-            </br>
+                </ul>
+            
+            
             <Link to='/groups/new' className="button btn-sm"> Create New Group </Link>
         </div>
     );

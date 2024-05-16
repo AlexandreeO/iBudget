@@ -11,20 +11,8 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
+
 
 
 .App {
@@ -35,26 +23,10 @@
       "header header"
       "sidebar main";
   height: 100vh;
-  overflow: hidden;
-}
-
-.header {
-  grid-area: header;
-  background-color: #2C3E50; /* Dark blue background */
-  color: #FFFFFF; /* White text color */
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1; /* Ensures the header is above other content if overlapping occurs */
+  overflow: auto;
 }
 
 
-.main-content {
-  grid-area: main;
-  overflow-y: auto; /* Allows vertical scrolling in the main content */
-  padding: 20px;
-}
 
 @keyframes App-logo-spin {
   from {
