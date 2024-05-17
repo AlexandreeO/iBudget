@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const expensesRouter = require('./routes/api/expenses');
+
 
 // Always require and configure near the top
 require('dotenv').config();
@@ -37,7 +37,7 @@ const port = process.env.PORT || 3001;
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/groups', require('./routes/api/groups'));
-app.use('/api/expenses', expensesRouter);
+app.use('/api/expenses', require('./routes/api/expenses'));
 
 
 // The following "catch all" route (note the *) is necessary

@@ -1,87 +1,42 @@
-import { useState, useEffect } from 'react';
-import * as expensesAPI from '../../utilities/expenses-api'; // Assume this is the API module for fetching expenses data
-import './AllExpensesPage.css'; // Import CSS for styling
+import React, { useState, useEffect } from 'react';
+import * as expensesAPI from '../../utilities/expenses-api'; // Assuming this is the API module for fetching expenses data
 
 export default function AllExpensesPage({ user }) {
     const [expenses, setExpenses] = useState([]);
-    const [balances, setBalances] = useState({});
-    const [summary, setSummary] = useState({});
-
+    const [totalPaid, setTotalPaid] = useState(0);
+   
     useEffect(() => {
         async function fetchExpenses() {
-            const userExpenses = await expensesAPI.getUserExpenses(user._id);
-            setExpenses(userExpenses);
-            calculateBalances(userExpenses);
+            try {
+                // Fetch all expenses for this user
+                const userExpenses = await expensesAPI.getUserExpenses();
+               
+                
+                
+                // Calculate the total amount paid
+                const total = userExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+                
+                setExpenses(userExpenses);
+                setTotalPaid(total);
+            } catch (error) {
+                console.error('Failed to fetch expenses:', error);
+                setExpenses([]);  // In case of an error, ensure state is set to prevent runtime errors
+            }
         }
         fetchExpenses();
-    });
-
-    const calculateBalances = (expenses) => {
-        const balances = {};
-        const summary = {
-            owes: {},
-            owedBy: {}
-        };
-
-        expenses.forEach(expense => {
-            const { amount, user: expenseUser, participants } = expense;
-
-            participants.forEach(participant => {
-                if (participant._id === user._id) return; // Skip self
-
-                const share = amount / (participants.length + 1); // +1 for the payer
-
-                if (expenseUser._id === user._id) {
-                    // User is the payer
-                    balances[participant._id] = (balances[participant._id] || 0) - share;
-                    summary.owedBy[participant._id] = (summary.owedBy[participant._id] || 0) + share;
-                } else if (participant._id === user._id) {
-                    // User is a participant
-                    balances[expenseUser._id] = (balances[expenseUser._id] || 0) + share;
-                    summary.owes[expenseUser._id] = (summary.owes[expenseUser._id] || 0) + share;
-                }
-            });
-        });
-
-        setBalances(balances);
-        setSummary(summary);
-    };
-
-    const renderSummary = (summary, type) => {
-        return Object.entries(summary[type]).map(([userId, amount]) => (
-            <li key={userId}>
-                {type === 'owes' ? `You owe ${userId}: $${amount.toFixed(2)}` : `${userId} owes you: $${amount.toFixed(2)}`}
-            </li>
-        ));
-    };
+    }, [user?._id]); // Dependency array to avoid unnecessary re-fetches
 
     return (
         <div className="all-expenses-page">
-            <h1>All Expenses</h1>
+            <h1>All Expenses I've Paid</h1>
             <ul className="expenses-list">
                 {expenses.map(expense => (
                     <li key={expense._id}>
-                        {expense.description} - ${expense.amount} on {new Date(expense.date).toLocaleDateString()} by {expense.user.name}
+                        {expense.description} - ${expense.amount.toFixed(2)} on {new Date(expense.date).toLocaleDateString()}
                     </li>
                 ))}
             </ul>
-            <h2>Your Balance</h2>
-            <ul className="balances-list">
-                {Object.entries(balances).map(([userId, balance]) => (
-                    <li key={userId}>
-                        {userId}: ${balance.toFixed(2)}
-                    </li>
-                ))}
-            </ul>
-            <h2>Summary</h2>
-            <h3>People you owe:</h3>
-            <ul className="summary-list">
-                {renderSummary(summary, 'owes')}
-            </ul>
-            <h3>People who owe you:</h3>
-            <ul className="summary-list">
-                {renderSummary(summary, 'owedBy')}
-            </ul>
+            <h2>Total Paid: ${totalPaid.toFixed(2)}</h2>
         </div>
     );
 }

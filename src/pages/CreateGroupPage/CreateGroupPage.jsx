@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import * as groupsAPI from "../../utilities/groups-api";
 
 export default function CreateGroupPage({ setGroupList }) {
@@ -6,6 +7,7 @@ export default function CreateGroupPage({ setGroupList }) {
     const [type, setType] = useState(""); // State for group type
 
     const [error, setError] = useState("");
+    const navigate = useNavigate(); 
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
@@ -22,6 +24,7 @@ export default function CreateGroupPage({ setGroupList }) {
             // Reset the groupName and type state after successfully creating the group
             setGroupName("");
             setType("");
+            navigate('/groups');
         } catch (error) {
             console.error("Error:", error.message);
             setError("Failed to create group. Please try again.");

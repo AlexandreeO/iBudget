@@ -18,7 +18,7 @@ export default function SideBar({ user, setUser }) {
             <hr />
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/groups">View Groups</Link>
-            <Link to="/expenses">My Expenses</Link>
+            <Link to={`/expenses`}>My Expenses</Link>
             <Link to="" onClick={handleLogOut}>Log Out</Link>
         </nav>
     );

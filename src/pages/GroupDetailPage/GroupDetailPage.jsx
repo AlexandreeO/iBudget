@@ -113,7 +113,7 @@ export default function GroupDetailPage({ currentUser }) {
                     <BalanceList balances={balances} groupMembers={group.groupMembers} />
                     {currentUser && currentUser._id === group.owner && (
                         <>
-                            <button onClick={handleDeleteGroup}>Delete Group</button>
+                            <button className="button btn-sm" onClick={handleDeleteGroup}>Delete Group</button>
                             <Link to={`/groups/${id}/edit`} className="button btn-sm">Edit Group</Link>
                         </>
                     )}

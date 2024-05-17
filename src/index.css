@@ -122,22 +122,26 @@ input:focus {
 
 button,
 a.button {
+    all: unset;  /* Remove all default styling */
+    display: inline-block;  /* Consistent display type */
     margin: 1vmin;
     padding: 10px 15px;
     color: var(--white);
     background-color: var(--orange);
-    font-size: 15px;
+    font-size: 1.5vmin;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
     border: 1px solid #f67f00;
     outline: none;
     cursor: pointer;
-    box-shadow: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    line-height: normal; /* Adjust line-height as necessary */
+    height: auto;  /* Or set a specific height if needed */
 }
 
-button.btn-sm {
+button.btn-sm, a.button.btn-sm {
     font-size: 1.5vmin;
     padding: 0.6vmin 0.8vmin;
 
