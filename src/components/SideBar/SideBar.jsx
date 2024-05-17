@@ -13,7 +13,8 @@ export default function SideBar({ user, setUser }) {
             <div className="sidebar-logo">
                 <img src={logo} alt="Logo" />
             </div>
-            <h5>Welcome, {user.name}</h5>
+            <hr />
+            <h5>Welcome,<br /> {user.name}</h5>
             <hr />
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/groups">View Groups</Link>

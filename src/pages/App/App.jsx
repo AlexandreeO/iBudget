@@ -52,6 +52,7 @@ export default function App() {
                             />
                             <Route
                                 path="/expenses"
+                                user={user}
                                 element={<AllExpensesPage />}
                             />
                             <Route

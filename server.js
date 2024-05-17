@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const expensesRouter = require('./routes/api/expenses');
+
 // Always require and configure near the top
 require('dotenv').config();
 // Connect to the database
@@ -20,12 +22,23 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Middleware to check and verify a JWT and
 // assign the user object from the JWT to req.user
 app.use(require('./config/checkToken'));
+// ensureLoggedIn.js
+module.exports = function ensureLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+      return next();
+  } else {
+      res.status(401).json({ error: 'Unauthorized' });
+  }
+};
+
 
 const port = process.env.PORT || 3001;
 
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/groups', require('./routes/api/groups'));
+app.use('/api/expenses', expensesRouter);
+
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests

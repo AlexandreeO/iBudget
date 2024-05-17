@@ -6,8 +6,8 @@
     --tan-3: #e2d9d1;
     --tan-4: #d3c1ae;
     --orange: #f67f00;
-    --text-light: #968c84;
-    --text-dark: #615954;
+    --text-light: #f67f00;
+    --text-dark: #772e01;
 }
 
 *,
@@ -130,15 +130,17 @@ a.button {
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    border: 0.1vmin solid var(--tan-2);
-    border-radius: 0.5vmin;
+    border: 1px solid #f67f00;
     outline: none;
     cursor: pointer;
+    box-shadow: black;
+    border-radius: 10px;
 }
 
 button.btn-sm {
     font-size: 1.5vmin;
     padding: 0.6vmin 0.8vmin;
+
 }
 
 button.btn-xs {

@@ -11,14 +11,17 @@
     flex-direction: column;
     justify-content: flex-start;
     z-index: 1000;
-    color: white; /* Text color set to white */
+    color: #f67f00; /* Text color set to white */
     font-size: 16px; /* Larger font size for better readability */
 }
 
 /* Header style within the sidebar, such as welcome message or title */
 .sidebar h5 {
+    color: #f67f00;
     margin-bottom: 20px; /* Space below the header */
-    font-weight: normal; /* Less emphasis on header weight */
+    letter-spacing: 3px;
+    margin: 0 auto 0;
+    font-weight: bold; /* Less emphasis on header weight */
 }
 
 /* Styling for links */
@@ -26,7 +29,7 @@
     color: #fff; /* White text color */
     text-decoration: none;
     padding: 10px;
-    margin-bottom: 10px; /* Space between links */
+    margin: 10px 0 0 10px; /* Space between links */
     display: flex; /* Align icons with text */
     align-items: center; /* Center items in a row */
     border-radius: 5px; /* Rounded corners for the link backgrounds */
@@ -34,7 +37,8 @@
 
 /* Hover and active styles for links */
 .sidebar a:hover, .sidebar a.active {
-    background-color: #f0ad4e; /* Bootstrap's button warning color for highlight */
+    background-color: #f67f00; /* Bootstrap's button warning color for highlight */
+    font-weight:bold;
     color: #333; /* Dark text color on hover for contrast */
 }
 
@@ -55,14 +59,14 @@
 }
 
 .sidebar div:hover {
-    background-color: #f0ad4e;
+    background-color: #f67f00;
     color: #333;
 }
 
 
 .sidebar-logo img {
     display: block;  
-    width: 80%;      
-    margin: 0 auto 20px; 
+    width: 100%;      
+    margin: 10px auto 10px; 
     height: auto;   
 }
