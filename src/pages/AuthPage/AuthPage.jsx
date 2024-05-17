@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import LoginForm from '../../components/LoginForm/LoginForm';
-
+import logo from '../../img/Ibudget.png';
 export default function AuthPage({ setUser }) {
   const [showSignUp, setShowSignUp] = useState(false);
   return (
-    <main>
-      <h1>AuthPage</h1>
-      <button onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? 'Log In' : 'Sign Up'}</button>
+    <>
+    <img src={logo} className="img-fluid" alt="logo" />
+    <div className="main-content">
+      
+      
       { showSignUp ?
           <SignUpForm setUser={setUser} />
           :
           <LoginForm setUser={setUser} />
       }
-    </main>
+      <button onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? 'Log In' : 'Sign Up'}</button>
+    </div>
+    </>
   );
 }
