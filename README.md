@@ -22,6 +22,15 @@ Welcome to iBudget, your ultimate solution for managing expenses and budgets amo
 
 5. **Stay Updated**: Keep everyone in the loop with real-time updates on expense tracking and contributions. iBudget ensures transparency and accountability.
 
+### Technologies Used:
+
+- JavaScript
+- HTML
+- CSS
+- Mongoose
+- Express
+- React
+
 ### Security:
 
 iBudget prioritizes the security and privacy of your financial data. Our platform employs robust encryption methods and offers both OAuth and token-based authentication to safeguard user accounts.
@@ -39,5 +48,16 @@ Say goodbye to the hassle of splitting expenses and managing budgets manually. W
 
 -  **Manage Budgets**: Set budgets for different expense categories to stay on track with your financial goals. Receive notifications when approaching budget limits.
 
--  **Split methods**: when adding an expense, user will be able to choose different splitting methods for instances when expense shouldn't be split equally.
+-  **Custom Split methods**: When adding an expense, user will be able to choose different splitting methods for instances when expense shouldn't be split equally, such as splitting by percentage or by exact amounts.                          
 
+- **Payment/Settle up function**: Users will be able to pay/settle expenses they owe to other group members.
+
+- **Friends page**: Users will be able to access a "frieds page" where they can check all their contacts and invite them to groups.
+
+- **Wallet Experience**: Users will have their own in-app wallet, which they will be able to deposit and withdraw their funds, and use the funds to pay expenses
+
+- **Integrating Stripe and other payments prividers (including crypto) for Payments**
+
+- **New authentication methods**: Users will be able to log in using their google, facebook, instagram and other accounts they already have in order to use iBudget seamlessly
+
+- **Summary report**: Users will be able to access a summary report so they can check all their transactions details history, balances against group members or friends, and more. The sumarry report will be an immutable ledger, similar to a bank statement.
