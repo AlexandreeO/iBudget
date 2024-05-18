@@ -70,16 +70,17 @@ https://ibudget-r6al.onrender.com/
 ### Screenshots:
 
 - Log in page:
-
+![login](./src/img/Authpage.png)
 
 - Sign up page:
-
+![signup](./src/img/Signuppage.png)
 
 - Groups page:
+![groupspage](./src/img/Groupspage.png)
 
 
 - Group details page:
-
+![groupdetailpage](./src/img/Groupdetailpage.png)
 
 - Expenses summary page:
-
+![expenses](./src/img/Allexpensespage.png)

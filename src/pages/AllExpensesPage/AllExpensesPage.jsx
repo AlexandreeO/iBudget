@@ -28,17 +28,23 @@ export default function AllExpensesPage({ user }) {
     }, [user?._id]); // Dependency array to avoid unnecessary re-fetches
 
     return (
-        <div className="all-expenses-page">
+        <div>
+            <div className="card">
+            <div className="card-header">
             <h1>All Expenses I've Paid</h1>
-            <ul className="expenses-list">
+            </div>
+            <div className="card-body">
+            <ul className="list-group">
                 {expenses.map((expense) => (
-                    <li key={expense._id}>
+                    <li className="list-group-item d-flex justify-content-between align-items-center" key={expense._id}>
                         {expense.description} - ${expense.amount.toFixed(2)} on{" "}
                         {new Date(expense.date).toLocaleDateString()}
                     </li>
                 ))}
             </ul>
             <h2>Total Paid: ${totalPaid.toFixed(2)}</h2>
+            </div>
+            </div>
         </div>
     );
 }

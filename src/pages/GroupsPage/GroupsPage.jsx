@@ -21,11 +21,11 @@ export default function GroupsPage() {
     
     return (
         <div>
-            <div class="card">
-            <div class="card-header">
+            <div className="card">
+            <div className="card-header">
             <h1>Groups</h1>
             </div>
-            <div class="card-body">
+            <div className="card-body">
             <ul className="list-group">
                 {groupList.map(group => (
                     <Link to={`/groups/${group._id}`} key={group._id}><li className="list-group-item d-flex justify-content-between align-items-center">{group.groupName}<span class="badge text-bg-primary rounded-pill">{group.type}</span></li></Link>
