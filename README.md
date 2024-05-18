@@ -6,25 +6,21 @@ Welcome to iBudget, your ultimate solution for managing expenses and budgets amo
 
 1. **Expense Tracking**: Easily create and manage expenses within your group. Whether it's splitting bills for a shared apartment, organizing a group trip, or managing expenses for a project, iBudget has you covered.
 
-2. **Budget Management**: Set budgets for different categories and monitor your spending to stay within your financial limits. iBudget helps you plan and allocate funds efficiently.
+2. **Contribution Management**: Keep track of who owes what and who has contributed how much towards each expense. iBudget ensures transparency and fairness in expense sharing.
 
-3. **Contribution Management**: Keep track of who owes what and who has contributed how much towards each expense. iBudget ensures transparency and fairness in expense sharing.
-
-4. **Authentication Options**: iBudget offers multiple authentication methods for secure access. Users can sign in using OAuth for convenience or opt for token-based authentication for enhanced security.
+3. **Authentication Options**: iBudget offers multiple authentication methods for secure access. Users can sign in using OAuth for convenience or opt for token-based authentication for enhanced security.
 
 ### Getting Started:
 
-1. **Sign Up/Sign In**: Create an account or sign in using OAuth for seamless access to iBudget's features.
+1. **Sign Up/Sign In**: Create an account or sign in for seamless access to iBudget's features.
 
 2. **Create Groups**: Start by creating a group for your shared expenses. Invite friends, family, or colleagues to join and collaborate.
 
-3. **Add Expenses**: Enter details for each expense incurred within the group. Specify the amount, description, and category to keep your finances organized.
+3. **Add Expenses**: Enter details for each expense incurred within the group. Specify the amount, description, and date to keep your finances organized.
 
 4. **Track Contributions**: Monitor contributions from each group member towards shared expenses. iBudget automatically calculates who owes what, simplifying repayment.
 
-5. **Manage Budgets**: Set budgets for different expense categories to stay on track with your financial goals. Receive notifications when approaching budget limits.
-
-6. **Stay Updated**: Keep everyone in the loop with real-time updates on expense tracking and contributions. iBudget ensures transparency and accountability.
+5. **Stay Updated**: Keep everyone in the loop with real-time updates on expense tracking and contributions. iBudget ensures transparency and accountability.
 
 ### Security:
 
@@ -37,3 +33,11 @@ We are constantly striving to improve iBudget and welcome your feedback. If you 
 ### Get Started with iBudget Today!
 
 Say goodbye to the hassle of splitting expenses and managing budgets manually. With iBudget, streamline your group finances and focus on what truly matters. Sign up now and take control of your shared expenses with ease!
+
+
+### Future improvements/icebox items:
+
+-  **Manage Budgets**: Set budgets for different expense categories to stay on track with your financial goals. Receive notifications when approaching budget limits.
+
+-  **Split methods**: when adding an expense, user will be able to choose different splitting methods for instances when expense shouldn't be split equally.
+

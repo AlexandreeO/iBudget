@@ -1,5 +1,8 @@
 import './InviteMember.css'
+
 export default function InviteMember({ onInvite, email, setEmail, message }) {
+
+   
     return (
         <div className="invite-member">
             <h2>Invite Friends</h2>

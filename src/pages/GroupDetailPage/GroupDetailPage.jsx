@@ -72,9 +72,13 @@ export default function GroupDetailPage({ currentUser }) {
             await groupsAPI.inviteMember(id, email);
             setMessage("Invitation sent successfully!");
             setEmail("");
+            
+            
+
         } catch (error) {
             setMessage(error.response.data.message);
         }
+        window.location.reload();
     };
 
     const handleAddExpense = async (event) => {
