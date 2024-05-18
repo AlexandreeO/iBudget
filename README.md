@@ -61,3 +61,25 @@ Say goodbye to the hassle of splitting expenses and managing budgets manually. W
 - **New authentication methods**: Users will be able to log in using their google, facebook, instagram and other accounts they already have in order to use iBudget seamlessly
 
 - **Summary report**: Users will be able to access a summary report so they can check all their transactions details history, balances against group members or friends, and more. The sumarry report will be an immutable ledger, similar to a bank statement.
+
+
+### Link to app:
+
+https://ibudget-r6al.onrender.com/
+
+### Screenshots:
+
+- Log in page:
+
+
+- Sign up page:
+
+
+- Groups page:
+
+
+- Group details page:
+
+
+- Expenses summary page:
+
