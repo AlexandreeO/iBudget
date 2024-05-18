@@ -26,15 +26,10 @@ export default function App() {
 
                     <div className="main-content">
                         <Routes>
-                            {/* <Route
+                            <Route
                                 path="/"
-                                element={
-                                <GroupsPage
-                                groupList={groupList}
-                                setGroupList={setGroupList}
-                                />
-                            }
-                            /> */}
+                                element={<HomePage/>}
+                            />
                             <Route
                                 path="/dashboard"
                                 element={<DashboardPage />}
