@@ -1,12 +1,12 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as groupsAPI from "../../utilities/groups-api";
-import GroupInfo from '../../components/GroupInfo/GroupInfo.jsx';
-import ExpenseList from '../../components/ExpenseList/ExpenseList.jsx';
-import BalanceList from '../../components/BalanceList/BalanceList.jsx';
-import InviteMember from '../../components/InviteMember/InviteMember.jsx';
-import AddExpenseForm from '../../components/AddExpenseForm/AddExpenseForm.jsx';
-import './GroupDetailPage.css';
+import GroupInfo from "../../components/GroupInfo/GroupInfo.jsx";
+import ExpenseList from "../../components/ExpenseList/ExpenseList.jsx";
+import BalanceList from "../../components/BalanceList/BalanceList.jsx";
+import InviteMember from "../../components/InviteMember/InviteMember.jsx";
+import AddExpenseForm from "../../components/AddExpenseForm/AddExpenseForm.jsx";
+import "./GroupDetailPage.css";
 
 export default function GroupDetailPage({ currentUser }) {
     const { id } = useParams();
@@ -23,15 +23,16 @@ export default function GroupDetailPage({ currentUser }) {
     const [selectedMember, setSelectedMember] = useState("");
     const navigate = useNavigate();
 
+    async function fetchGroupAndExpenses() {
+        const groupData = await groupsAPI.getGroup(id);
+        setGroup(groupData);
+        const groupExpensesData = await groupsAPI.getGroupExpenses(id);
+        setGroupExpenses(groupExpensesData);
+    }
     useEffect(() => {
-        async function fetchGroupAndExpenses() {
-            const groupData = await groupsAPI.getGroup(id);
-            setGroup(groupData);
-            const groupExpensesData = await groupsAPI.getGroupExpenses(id);
-            setGroupExpenses(groupExpensesData);
-        }
+        console.log("Fetching group and expenses...");
         fetchGroupAndExpenses();
-    }, [id]);
+    }, [id, message]);
 
     useEffect(() => {
         if (group && groupExpenses.length) {
@@ -40,23 +41,23 @@ export default function GroupDetailPage({ currentUser }) {
         }
     }, [group, groupExpenses]);
 
-    const filteredExpenses = selectedMember 
-        ? groupExpenses.filter(expense => expense.user._id === selectedMember)
+    const filteredExpenses = selectedMember
+        ? groupExpenses.filter((expense) => expense.user._id === selectedMember)
         : groupExpenses;
 
     const calculateBalances = (group, expenses) => {
         const memberBalances = {};
         const numMembers = group.groupMembers.length;
 
-        group.groupMembers.forEach(member => {
+        group.groupMembers.forEach((member) => {
             memberBalances[member._id] = 0;
         });
 
-        expenses.forEach(expense => {
+        expenses.forEach((expense) => {
             const share = expense.amount / numMembers;
-            group.groupMembers.forEach(member => {
+            group.groupMembers.forEach((member) => {
                 if (expense.user._id === member._id) {
-                    memberBalances[member._id] += (expense.amount - share);
+                    memberBalances[member._id] += expense.amount - share;
                 } else {
                     memberBalances[member._id] -= share;
                 }
@@ -72,26 +73,28 @@ export default function GroupDetailPage({ currentUser }) {
             await groupsAPI.inviteMember(id, email);
             setMessage("Invitation sent successfully!");
             setEmail("");
-            
-            
 
+            console.log("Invitation sent successfully!");
+            console.log("Fetching group and expenses again...");
+            await fetchGroupAndExpenses();
+            // window.location.reload();
         } catch (error) {
-            setMessage(error.response.data.message);
+            console.log({msg: error, type: "API Error"})
+            setMessage(error.response?.data?.message);
         }
-        window.location.reload();
     };
 
     const handleAddExpense = async (event) => {
         event.preventDefault();
         const newExpense = await groupsAPI.addExpense(id, expense);
         setExpense({ description: "", date: "", amount: "" });
-        setGroupExpenses(prevExpenses => [...prevExpenses, newExpense]);
+        setGroupExpenses((prevExpenses) => [...prevExpenses, newExpense]);
     };
 
     const handleDeleteGroup = async () => {
         try {
             await groupsAPI.deleteGroup(id);
-            navigate('/groups');
+            navigate("/groups");
         } catch (error) {
             console.error("Error deleting group:", error.message);
         }
@@ -108,20 +111,37 @@ export default function GroupDetailPage({ currentUser }) {
                 <>
                     <GroupInfo group={group} />
                     <ExpenseList
-
                         expenses={filteredExpenses}
                         groupMembers={group.groupMembers}
                         selectedMember={selectedMember}
                         onMemberSelect={handleMemberSelect}
                     />
-                    <BalanceList balances={balances} groupMembers={group.groupMembers} />
+                    <BalanceList
+                        balances={balances}
+                        groupMembers={group.groupMembers}
+                    />
                     {currentUser && currentUser._id === group.owner && (
                         <>
-                            <button className="button btn-sm" onClick={handleDeleteGroup}>Delete Group</button>
-                            <Link to={`/groups/${id}/edit`} className="button btn-sm">Edit Group</Link>
+                            <button
+                                className="button btn-sm"
+                                onClick={handleDeleteGroup}
+                            >
+                                Delete Group
+                            </button>
+                            <Link
+                                to={`/groups/${id}/edit`}
+                                className="button btn-sm"
+                            >
+                                Edit Group
+                            </Link>
                         </>
                     )}
-                    <Link to={`/groups/${id}/summary`} className="button btn-sm">Summary</Link>
+                    <Link
+                        to={`/groups/${id}/summary`}
+                        className="button btn-sm"
+                    >
+                        Summary
+                    </Link>
                 </>
             ) : (
                 <p>You don't have any group yet</p>
@@ -140,7 +160,6 @@ export default function GroupDetailPage({ currentUser }) {
         </div>
     );
 }
-
 
 // import { useParams, useNavigate, Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
@@ -243,7 +262,7 @@ export default function GroupDetailPage({ currentUser }) {
 //         }
 //     }, [group, groupExpenses]);
 
-//     const filteredExpenses = selectedMember 
+//     const filteredExpenses = selectedMember
 //         ? groupExpenses.filter(expense => expense.user._id === selectedMember)
 //         : groupExpenses;
 

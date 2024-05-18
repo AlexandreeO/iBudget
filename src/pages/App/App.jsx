@@ -5,6 +5,7 @@ import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
 import SideBar from "../../components/SideBar/SideBar";
 import GroupsPage from "../../pages/GroupsPage/GroupsPage";
+import HomePage from "../../pages/HomePage/HomePage";
 import DashboardPage from "../../pages/DashboardPage/DashboardPage";
 import AllExpensesPage from "../../pages/AllExpensesPage/AllExpensesPage";
 import CreateGroupPage from "../../pages/CreateGroupPage/CreateGroupPage";
@@ -22,8 +23,18 @@ export default function App() {
                     <div>
                         <SideBar user={user} setUser={setUser}/>
                     </div>
+
                     <div className="main-content">
                         <Routes>
+                            {/* <Route
+                                path="/"
+                                element={
+                                <GroupsPage
+                                groupList={groupList}
+                                setGroupList={setGroupList}
+                                />
+                            }
+                            /> */}
                             <Route
                                 path="/dashboard"
                                 element={<DashboardPage />}
