@@ -106,7 +106,9 @@ export default function GroupDetailPage({ currentUser }) {
 
     return (
         <div className="main-content">
+            <div className="card-header">
             <div className="header">Group Details</div>
+            </div>
             {group ? (
                 <>
                     <GroupInfo group={group} />
